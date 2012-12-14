@@ -39,13 +39,19 @@ class RubyDesignSignature < Sinatra::Base
   end
 
   post '/sign' do
-    halt 418, "ZOMG HONEY!!!" * 100 if params[:email_address]
+    check_the_pot
     @signature = Signature.new(email: params[:email])
     if @signature.save
       redirect '/thanks'
     else
       @errors = @signature.errors.full_messages
       slim :index
+    end
+  end
+
+  def check_the_pot
+    unless params[:email_address].empty?
+      halt 418, "ZOMG HONEY!!!" * 100
     end
   end
 end

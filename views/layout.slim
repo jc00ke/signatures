@@ -18,22 +18,13 @@ html
     div class="container"
 
       h1.hero
-        a href="/" Ruby Design
-
-
-      - if @errors
-        ul.errors
-        - @errors.each do |error|
-          li= error
-
+        a href="/" = @header
 
       div class="hero-unit"
+
         == yield
 
       hr
-
-      footer
-        p &copy; Company 2012
 
     script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"
     javascript:
