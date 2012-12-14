@@ -27,6 +27,10 @@ class RubyDesignSignature < Sinatra::Base
     slim :index
   end
 
+  get '/thanks' do
+    slim :thanks
+  end
+
   post '/sign' do
     @signature = Signature.new(email: params[:email])
     if @signature.save
