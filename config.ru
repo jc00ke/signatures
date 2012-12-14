@@ -28,7 +28,13 @@ class RubyDesignSignature < Sinatra::Base
   end
 
   post '/sign' do
-    puts params[:email]
+    @signature = Signature.new(email: params[:email])
+    if @signature.save
+      redirect '/thanks'
+    else
+      @errors = @signature.errors.full_messages
+      slim :index
+    end
   end
 end
 

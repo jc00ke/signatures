@@ -19,6 +19,12 @@ html
 
     div class="container"
 
+      - if @errors
+        ul.errors
+        - @errors.each do |error|
+          li= error
+
+
       div class="hero-unit"
         == yield
 
