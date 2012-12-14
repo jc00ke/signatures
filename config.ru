@@ -32,6 +32,7 @@ class RubyDesignSignature < Sinatra::Base
   end
 
   post '/sign' do
+    halt 418, "ZOMG HONEY!!!" * 100 if params[:email_address]
     @signature = Signature.new(email: params[:email])
     if @signature.save
       redirect '/thanks'
