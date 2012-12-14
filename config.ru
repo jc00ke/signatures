@@ -25,13 +25,16 @@ end
 class RubyDesignSignature < Sinatra::Base
   before do
     @ga = ENV['GOOGLE_ANALYTICS_UA']
+    @header = ENV['SIGNATURES_HEADER'] || "Signatures"
   end
 
   get '/' do
+    @title = "Signatures, we want yours"
     slim :index
   end
 
   get '/thanks' do
+    @title = "Thanks!"
     slim :thanks
   end
 
