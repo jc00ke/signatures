@@ -23,6 +23,10 @@ class Signature < Sequel::Model
 end
 
 class RubyDesignSignature < Sinatra::Base
+  before do
+    @ga = ENV['GOOGLE_ANALYTICS_UA']
+  end
+
   get '/' do
     slim :index
   end
